@@ -24,7 +24,7 @@ let card = {
         name: 'Adventures in the Forgotten Realms Commander',
         rarity: 'Uncommon',
         numberCard: 151,
-        numberCards: 0
+        numberCards: 'xxx'
     },
     /**List of all the abilities */
     abilities : [
@@ -68,6 +68,7 @@ let card = {
 
 let newContent;
 let newTag;
+let textTemp;
 
 /**Adding the name to the HTML */
 newContent = document.createTextNode(card.name);
@@ -91,9 +92,8 @@ newContent = document.createTextNode(card.cmcMana());
 document.getElementById('card-cmc').appendChild(newContent);
 
 /**Reading a card Type, always the family and showing the kinds only if present */
-let textTemp;
 textTemp = card.type.family;
-if (card.type.kind)
+if (card.type.kind.length)
 {
     textTemp += " - ";
     for (let i = 0; i < card.type.kind.length; i++)
@@ -104,3 +104,54 @@ if (card.type.kind)
 newContent = document.createTextNode(textTemp);
 document.getElementById('card-type').appendChild(newContent);
 
+/**Ouput of the cardText, showing abilities */
+if (card.abilities.length)
+{
+    document.getElementById('card-text-row').className = 'row';
+    for (let i = 0; i < card.abilities.length; i++)
+    {   
+        newTag = document.createElement('li');
+        // For In to control every property inside abilities
+        // for (let proprieta in card.abilities[i])
+        // {
+        //     textTemp += card.abilities[i][prorieta];
+        // }        
+        newContent = document.createTextNode(card.abilities[i].description);
+        newTag.appendChild(newContent);
+        document.getElementById('card-text').appendChild(newTag);
+    }    
+    document.getElementById('card-text').appendChild(newTag);
+}
+
+/**Flavor text Output */
+newContent = document.createTextNode(card.flavorText);
+document.getElementById('card-flavor-text').appendChild(newContent);
+
+/**Power and Toughness */
+textTemp = `${card.power} / ${card.thoghness}`;
+newContent = document.createTextNode(textTemp);
+document.getElementById('card-strength').appendChild(newContent);
+
+/**Expansion Output */
+newContent = document.createTextNode(card.expansion.name);
+document.getElementById('card-expansion').appendChild(newContent);
+
+/**Rarity Output*/
+newContent = document.createTextNode(card.expansion.rarity);
+document.getElementById('card-rarity').appendChild(newContent);
+
+/**Number of the card Output*/
+newContent = document.createTextNode(card.expansion.numberCard);
+document.getElementById('card-number').appendChild(newContent);
+if(card.expansion.numberCards)
+{
+    newContent = document.createTextNode("/" + card.expansion.numberCards);
+    document.getElementById('card-number').appendChild(newContent);
+}
+
+/**Artist name Output */
+newContent = document.createTextNode(card.artist);
+document.getElementById('card-artist').appendChild(newContent);
+
+/**IMG selection */
+document.getElementById('img-card').setAttribute('src','https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=533382&type=card');
