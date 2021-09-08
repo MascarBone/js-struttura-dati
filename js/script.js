@@ -69,11 +69,11 @@ let card = {
 let newContent;
 let newTag;
 
+/**Adding the name to the HTML */
 newContent = document.createTextNode(card.name);
 document.getElementById('card-name').appendChild(newContent);
 
-let colored;
-
+/**Adding the mana cost using a For to read the color of the mana */
 for (let proprieta in card.manaCost)
 {
     if(card.manaCost[proprieta] != 0)
@@ -85,3 +85,22 @@ for (let proprieta in card.manaCost)
         document.getElementById('card-mana').appendChild(newTag);
     }
 }
+
+/**Using the method cmcMana to calculate the total mana cost */
+newContent = document.createTextNode(card.cmcMana());
+document.getElementById('card-cmc').appendChild(newContent);
+
+/**Reading a card Type, always the family and showing the kinds only if present */
+let textTemp;
+textTemp = card.type.family;
+if (card.type.kind)
+{
+    textTemp += " - ";
+    for (let i = 0; i < card.type.kind.length; i++)
+    {
+        textTemp += card.type.kind[i] + " ";
+    }
+}
+newContent = document.createTextNode(textTemp);
+document.getElementById('card-type').appendChild(newContent);
+
