@@ -53,5 +53,39 @@ let card = {
             sum += this.manaCost[property];
         }
         return sum;
+    },
+
+    manaType: function() {
+
     }
 }
+
+let newLi;
+let newContent;
+
+
+newLi = document.createElement("li");
+newContent = document.createTextNode(card.name);
+newLi.appendChild(newContent);
+// newLi.classList = 'name-card';
+document.getElementById('card-informations').appendChild(newLi);
+
+
+
+newLi = document.createElement("li");
+for (let proprieta in card.manaCost)
+{
+    if (card.manaCost[proprieta] != 0)
+    {
+        newContent = document.createTextNode(card.manaCost[proprieta]);
+        newLi.appendChild(newContent);
+    }
+}
+document.getElementById('card-informations').appendChild(newLi);
+
+
+// const newLi = document.createElement("li");
+// const newContent = document.createTextNode(card[proprieta]);
+// newLi.appendChild(newContent);
+// document.getElementById('card-attributes').appendChild(newLi);
+
