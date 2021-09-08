@@ -2,8 +2,28 @@ ul {
     list-style-type: none;
 }
 
-#card-attributes {
+.card-attributes {
     text-align: right;
+}
+.my_bg-common {
+    background-color: rgba(202, 202, 202, 0.712);
+    color: black;
+}
+.my_bg-black {
+    background-color: rgba(0, 0, 0, 0.712);
+    color: white;
+}
+.my_bg-blue {
+    background-color: rgba(11, 0, 170, 0.712);
+}
+.my_bg-green {
+    background-color: rgba(14, 100, 14, 0.712);
+}
+.my_bg-red {
+    background-color: rgba(158, 0, 0, 0.712);
+}
+.my_bg-white {
+    background-color: rgba(255, 255, 255, 0.712);
 }
 
 /* #card-informations {

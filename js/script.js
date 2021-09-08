@@ -60,32 +60,28 @@ let card = {
     }
 }
 
-let newLi;
-let newContent;
-
-
-newLi = document.createElement("li");
-newContent = document.createTextNode(card.name);
-newLi.appendChild(newContent);
-// newLi.classList = 'name-card';
-document.getElementById('card-informations').appendChild(newLi);
-
-
-
-newLi = document.createElement("li");
-for (let proprieta in card.manaCost)
-{
-    if (card.manaCost[proprieta] != 0)
-    {
-        newContent = document.createTextNode(card.manaCost[proprieta]);
-        newLi.appendChild(newContent);
-    }
-}
-document.getElementById('card-informations').appendChild(newLi);
-
 
 // const newLi = document.createElement("li");
 // const newContent = document.createTextNode(card[proprieta]);
 // newLi.appendChild(newContent);
 // document.getElementById('card-attributes').appendChild(newLi);
 
+let newContent;
+let newTag;
+
+newContent = document.createTextNode(card.name);
+document.getElementById('card-name').appendChild(newContent);
+
+let colored;
+
+for (let proprieta in card.manaCost)
+{
+    if(card.manaCost[proprieta] != 0)
+    {
+        newTag = document.createElement('span');        
+        newTag.classList = `my_bg-${proprieta}`;
+        newContent = document.createTextNode(card.manaCost[proprieta]);
+        newTag.appendChild(newContent);
+        document.getElementById('card-mana').appendChild(newTag);
+    }
+}
